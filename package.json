@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nuxt -c client/nuxt.config.js",
+    "build": "nuxt build -c client/nuxt.config.js",
+    "start": "nuxt start -c client/nuxt.config.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.1",
+    "@fortawesome/fontawesome-free-brands": "^5.0.3",
+    "@fortawesome/fontawesome-free-regular": "^5.0.3",
+    "@fortawesome/fontawesome-free-solid": "^5.0.3",
+    "@fortawesome/vue-fontawesome": "^0.0.22",
+    "@nuxtjs/router": "^1.0.1",
+    "axios": "^0.17.1",
+    "bootstrap": "^4.0.0-beta.3",
+    "dotenv": "^4.0.0",
+    "jquery": "^3.2.1",
+    "js-cookie": "^2.2.0",
+    "nuxt": "^1.0.0",
+    "popper.js": "^1.12.9",
+    "sweetalert2": "^7.3.5",
+    "vform": "^0.8.1",
+    "vue-i18n": "^7.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-vue-libs": "^2.1.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
+  }
+}
