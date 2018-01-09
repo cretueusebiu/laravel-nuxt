@@ -1,5 +1,5 @@
 <template>
-  <a v-if="githubAuth" href="/oauth/github" class="btn btn-dark ml-auto">
+  <a v-if="githubAuth" :href="url" class="btn btn-dark ml-auto">
     {{ $t('login_with') }}
     <fa :icon="['fab', 'github']"/>
   </a>
@@ -10,7 +10,8 @@ export default {
   name: 'LoginWithGithub',
 
   computed: {
-    githubAuth: () => process.env.githubAuth
+    githubAuth: () => process.env.githubAuth,
+    url: () => `${process.env.apiUrl}/oauth/github`
   }
 }
 </script>

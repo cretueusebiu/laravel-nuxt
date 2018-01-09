@@ -4,20 +4,22 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const routes = [
-  { path: '/', name: 'welcome', component: require('~/pages/welcome') },
+  { path: '/', name: 'welcome', component: require('~/pages/welcome').default },
 
-  { path: '/home', name: 'home', component: require('~/pages/home') },
+  { path: '/home', name: 'home', component: require('~/pages/home').default },
 
-  { path: '/settings', component: require('~/pages/settings/index'), children: [
+  { path: '/settings', component: require('~/pages/settings/index').default, children: [
     { path: '', redirect: { name: 'settings.profile' }},
-    { path: 'profile', name: 'settings.profile', component: require('~/pages/settings/profile') },
-    { path: 'password', name: 'settings.password', component: require('~/pages/settings/password') }
+    { path: 'profile', name: 'settings.profile', component: require('~/pages/settings/profile').default },
+    { path: 'password', name: 'settings.password', component: require('~/pages/settings/password').default }
   ]},
 
-  { path: '/login', name: 'login', component: require('~/pages/auth/login') },
-  { path: '/register', name: 'register', component: require('~/pages/auth/register') },
-  { path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email') },
-  { path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset') }
+  { path: '/login', name: 'login', component: require('~/pages/auth/login').default },
+  { path: '/register', name: 'register', component: require('~/pages/auth/register').default },
+  { path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email').default },
+  { path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset').default },
+
+  { path: '/oauth/:driver', component: require('~/pages/auth/oauth-callback').default }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {
@@ -39,12 +41,6 @@ const scrollBehavior = (to, from, savedPosition) => {
 }
 
 export function createRouter() {
-  routes.forEach(r => {
-    if (r.component.default) {
-      r.component = r.component.default
-    }
-  })
-
   return new Router({
     routes,
     scrollBehavior,

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('oauth/{driver}', 'Auth\OAuthController@redirectToProvider')->name('oauth');
-Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-
-Route::get('password/reset/{token}', function () {
-    return view('index');
-})->name('password.reset');
+Route::get('/', function () {
+    return 'welcome';
+});

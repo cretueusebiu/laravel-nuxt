@@ -9,7 +9,7 @@
             <div class="col-md-7">
               <input v-model="form.name" type="text" name="name" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('name') }">
-              <has-error :form="form" field="name"></has-error>
+              <has-error :form="form" field="name"/>
             </div>
           </div>
 
@@ -19,7 +19,7 @@
             <div class="col-md-7">
               <input v-model="form.email" type="email" name="email" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('email') }">
-              <has-error :form="form" field="email"></has-error>
+              <has-error :form="form" field="email"/>
             </div>
           </div>
 
@@ -29,7 +29,7 @@
             <div class="col-md-7">
               <input v-model="form.password" type="password" name="password" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('password') }">
-              <has-error :form="form" field="password"></has-error>
+              <has-error :form="form" field="password"/>
             </div>
           </div>
 
@@ -39,7 +39,7 @@
             <div class="col-md-7">
               <input v-model="form.password_confirmation" type="password" name="password_confirmation" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('password_confirmation') }">
-              <has-error :form="form" field="password_confirmation"></has-error>
+              <has-error :form="form" field="password_confirmation"/>
             </div>
           </div>
 

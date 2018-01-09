@@ -9,7 +9,7 @@
             <div class="col-md-7">
               <input v-model="form.email" type="email" name="email" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('email') }">
-              <has-error :form="form" field="email"></has-error>
+              <has-error :form="form" field="email"/>
             </div>
           </div>
 
@@ -19,7 +19,7 @@
             <div class="col-md-7">
               <input v-model="form.password" type="password" name="password" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('password') }">
-              <has-error :form="form" field="password"></has-error>
+              <has-error :form="form" field="password"/>
             </div>
           </div>
 

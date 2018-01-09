@@ -70,5 +70,11 @@ export const actions = {
     } catch (e) { }
 
     commit('LOGOUT')
+  },
+
+  async oauthCallback ({ commit }, { driver, params }) {
+    const { data } = await axios.get(`/oauth/${driver}/callback`, { params })
+
+    console.log(data)
   }
 }

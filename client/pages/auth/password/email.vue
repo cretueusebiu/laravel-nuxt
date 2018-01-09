@@ -3,7 +3,7 @@
     <div class="col-lg-8 m-auto">
       <card :title="$t('reset_password')">
         <form @submit.prevent="send" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status"></alert-success>
+          <alert-success :form="form" :message="status"/>
 
           <!-- Email -->
           <div class="form-group row">
@@ -11,7 +11,7 @@
             <div class="col-md-7">
               <input v-model="form.email" type="email" name="email" class="form-control"
                 :class="{ 'is-invalid': form.errors.has('email') }">
-              <has-error :form="form" field="email"></has-error>
+              <has-error :form="form" field="email"/>
             </div>
           </div>
 

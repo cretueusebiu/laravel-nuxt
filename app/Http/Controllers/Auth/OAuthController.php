@@ -20,7 +20,7 @@ class OAuthController extends Controller
     public function __construct()
     {
         config([
-            'services.github.redirect' => route('oauth.callback', 'github'),
+            'services.github.redirect' => config('app.client_url').'/oauth/github',
         ]);
     }
 
@@ -54,17 +54,20 @@ class OAuthController extends Controller
             $user = $provider->user;
         } else {
             if (User::where('email', $user->getEmail())->exists()) {
-                return redirect('/?error=email_taken');
+                return redirect(config('app.client_url').'?error=email_taken');
             }
 
             $user = $this->createUser($driver, $user);
         }
 
         $token = $this->guard()->login($user);
+        $expiration = $this->guard()->getPayload()->get('exp');
 
-        return redirect('/home')->withCookie(
-            cookie('token', $token, 0, null, null, false, false)
-        );
+        return [
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => $expiration - time(),
+        ];
     }
 
     /**
