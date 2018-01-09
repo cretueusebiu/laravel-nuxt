@@ -20,19 +20,21 @@ class OAuthController extends Controller
     public function __construct()
     {
         config([
-            'services.github.redirect' => config('app.client_url').'/oauth/github',
+            'services.github.redirect' => route('oauth.callback', 'github'),
         ]);
     }
 
     /**
      * Redirect the user to the provider authentication page.
      *
-     * @param  string $driver
+     * @param  string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirectToProvider($driver)
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver($driver)->stateless()->redirect();
+        return [
+            'url' => Socialite::driver($provider)->stateless()->redirect()->getTargetUrl()
+        ];
     }
 
     /**
@@ -41,41 +43,58 @@ class OAuthController extends Controller
      * @param  string $driver
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($driver)
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($driver)->stateless()->user();
+        $user = Socialite::driver($provider)->stateless()->user();
 
-        if ($provider = $this->findProvider($driver, $user->getId())) {
+        if (! $user = $this->findOrCreateUser($provider, $user)) {
+            return redirect(config('app.client_url').'?error=email_taken');
+        }
+
+        $this->guard()->setToken(
+            $token = $this->guard()->login($user)
+        );
+
+        return view('oauthCallback', [
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => $this->guard()->getPayload()->get('exp') - time(),
+        ]);
+    }
+
+    /**
+     * @param  string $provider
+     * @param  \Laravel\Socialite\Contracts\User $sUser
+     * @return \App\User|false
+     */
+    protected function findOrCreateUser($provider, $user)
+    {
+        $provider =  OAuthProvider::where('provider', $provider)
+            ->where('provider_user_id', $user->getId())
+            ->first();
+
+        if ($provider) {
             $provider->update([
                 'access_token' => $user->token,
                 'refresh_token' => $user->refreshToken,
             ]);
 
-            $user = $provider->user;
-        } else {
-            if (User::where('email', $user->getEmail())->exists()) {
-                return redirect(config('app.client_url').'?error=email_taken');
-            }
-
-            $user = $this->createUser($driver, $user);
+            return $provider->user;
         }
 
-        $token = $this->guard()->login($user);
-        $expiration = $this->guard()->getPayload()->get('exp');
+        if (User::where('email', $user->getEmail())->exists()) {
+            return false;
+        }
 
-        return [
-            'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $expiration - time(),
-        ];
+        return $this->createUser($provider, $user);
     }
 
     /**
-     * @param  string $driver
+     * @param  string $provider
      * @param  \Laravel\Socialite\Contracts\User $sUser
      * @return \App\User
      */
-    protected function createUser($driver, $sUser)
+    protected function createUser($provider, $sUser)
     {
         $user = User::create([
             'name' => $sUser->getName(),
@@ -83,24 +102,12 @@ class OAuthController extends Controller
         ]);
 
         $user->oauthProviders()->create([
-            'provider' => $driver,
+            'provider' => $provider,
             'provider_user_id' => $sUser->getId(),
             'access_token' => $sUser->token,
             'refresh_token' => $sUser->refreshToken,
         ]);
 
         return $user;
-    }
-
-    /**
-     * @param  string $driver
-     * @param  string $userId
-     * @return \App\OAuthProvider|null
-     */
-    protected function findProvider($driver, $userId)
-    {
-        return OAuthProvider::where('provider', $driver)
-            ->where('provider_user_id', $userId)
-            ->first();
     }
 }

@@ -31,6 +31,6 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::get('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
-    Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback');
+    Route::post('oauth/{provider}', 'Auth\OAuthController@redirectToProvider');
+    Route::get('oauth/{provider}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
 });

@@ -17,9 +17,7 @@ const routes = [
   { path: '/login', name: 'login', component: require('~/pages/auth/login').default },
   { path: '/register', name: 'register', component: require('~/pages/auth/register').default },
   { path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email').default },
-  { path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset').default },
-
-  { path: '/oauth/:driver', component: require('~/pages/auth/oauth-callback').default }
+  { path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset').default }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {

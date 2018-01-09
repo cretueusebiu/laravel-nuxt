@@ -72,9 +72,9 @@ export const actions = {
     commit('LOGOUT')
   },
 
-  async oauthCallback ({ commit }, { driver, params }) {
-    const { data } = await axios.get(`/oauth/${driver}/callback`, { params })
+  async fetchOauthUrl (ctx, { provider }) {
+    const { data } = await axios.post(`/oauth/${provider}`)
 
-    console.log(data)
+    return data.url
   }
 }
