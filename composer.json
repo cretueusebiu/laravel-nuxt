@@ -1,7 +1,7 @@
 {
-    "name": "cretueusebiu/laravel-vue-spa",
-    "description": "A Laravel-Vue SPA starter project template.",
-    "keywords": ["spa", "laravel", "vue"],
+    "name": "cretueusebiu/laravel-nuxt",
+    "description": "A Laravel-Nuxt starter project template.",
+    "keywords": ["laravel", "nuxt", "vue", "spa"],
     "license": "MIT",
     "type": "project",
     "require": {
