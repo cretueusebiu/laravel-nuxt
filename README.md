@@ -23,7 +23,7 @@
 ## Installation
 
 - `composer create-project --prefer-dist cretueusebiu/laravel-nuxt`
-- Edit `.env` and set your database connection details and `APP_URL` (the url to your Laravel application)
+- Edit `.env` to set your database connection details and `APP_URL` (the url to your Laravel application)
 - `php artisan migrate`
 - `yarn` / `npm install`
 
@@ -44,7 +44,7 @@ npm run start
 
 #### Nginx Proxy
 
-If you're using Nginx on you'll need a proxy. Use the follwing location block:
+For Nginx you can add a proxy using the follwing location block:
 
 ```
 server {
@@ -63,7 +63,7 @@ Where `HOST` is the ip address of your server and `PORT` is the port you're runn
 
 #### Process Manager
 
-In production you'll need a process manager to keep the Node server alive forever:
+In production you need a process manager to keep the Node server alive forever:
 
 ```bash
 # install pm2 process manager
