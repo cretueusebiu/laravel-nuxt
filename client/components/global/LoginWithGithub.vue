@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'LoginWithGithub',
 
@@ -62,8 +60,8 @@ function openWindow (url, title, options = {}) {
 
   options = { url, title, width: 600, height: 720, ...options }
 
-  const dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left
-  const dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top
+  const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
+  const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
   const width = window.innerWidth || document.documentElement.clientWidth || screen.width
   const height = window.innerHeight || document.documentElement.clientHeight || screen.height
 
