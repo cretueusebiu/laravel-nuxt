@@ -14,7 +14,6 @@ const polyfills = [
   'String.prototype.endsWith'
 ]
 
-
 module.exports = {
   srcDir: __dirname,
 

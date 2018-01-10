@@ -12,7 +12,7 @@ const routes = [
     { path: '', redirect: { name: 'settings.profile' }},
     { path: 'profile', name: 'settings.profile', component: require('~/pages/settings/profile').default },
     { path: 'password', name: 'settings.password', component: require('~/pages/settings/password').default }
-  ]},
+  ] },
 
   { path: '/login', name: 'login', component: require('~/pages/auth/login').default },
   { path: '/register', name: 'register', component: require('~/pages/auth/register').default },
@@ -38,7 +38,7 @@ const scrollBehavior = (to, from, savedPosition) => {
   return position
 }
 
-export function createRouter() {
+export function createRouter () {
   return new Router({
     routes,
     scrollBehavior,
