@@ -88,6 +88,13 @@ After each deploy you'll need to restart the process:
 pm2 restart laravel-nuxt 
 ```
 
+Make sure to read the [Nuxt docs](https://nuxtjs.org/).
+
+## Notes
+
+- This project uses [router-module](https://github.com/nuxt-community/router-module), so you have to add the routes manually in `client/router.js`.
+- If you want to separate this in two projects (client and server api), move `package.json` into `client/` and remove config path option from the scripts section. Also make sure to add the env variables in `client/.env`.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
