@@ -67,17 +67,17 @@ class OAuthController extends Controller
      */
     protected function findOrCreateUser($provider, $user)
     {
-        $provider =  OAuthProvider::where('provider', $provider)
+        $oauthProvider = OAuthProvider::where('provider', $provider)
             ->where('provider_user_id', $user->getId())
             ->first();
 
-        if ($provider) {
-            $provider->update([
+        if ($oauthProvider) {
+            $oauthProvider->update([
                 'access_token' => $user->token,
                 'refresh_token' => $user->refreshToken,
             ]);
 
-            return $provider->user;
+            return $oauthProvider->user;
         }
 
         if (User::where('email', $user->getEmail())->exists()) {

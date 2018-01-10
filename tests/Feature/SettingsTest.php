@@ -22,7 +22,7 @@ class SettingsTest extends TestCase
     public function update_profile_info()
     {
         $this->actingAs($this->user)
-            ->patchJson('/api/settings/profile', [
+            ->patchJson('/settings/profile', [
                 'name' => 'Test User',
                 'email' => 'test@test.app',
             ])
@@ -40,7 +40,7 @@ class SettingsTest extends TestCase
     public function update_password()
     {
         $this->actingAs($this->user)
-            ->patchJson('/api/settings/password', [
+            ->patchJson('/settings/password', [
                 'password' => 'updated',
                 'password_confirmation' => 'updated',
             ])
