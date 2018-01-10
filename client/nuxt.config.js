@@ -29,7 +29,7 @@ module.exports = {
   loading: { color: '#007bff' },
 
   router: {
-    middleware: ['check-auth']
+    middleware: ['locale', 'check-auth']
   },
 
   css: [

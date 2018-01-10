@@ -15,10 +15,8 @@ export default ({ app, store, redirect }) => {
 
     const locale = store.getters['lang/locale']
     if (locale) {
-      axios.defaults.headers.common['Accept-Language'] = locale
+      request.headers.common['Accept-Language'] = locale
     }
-
-    // request.headers['X-Socket-Id'] = Echo.socketId()
 
     return request
   })
@@ -26,7 +24,7 @@ export default ({ app, store, redirect }) => {
   // Response interceptor
   axios.interceptors.response.use(response => response, error => {
     if (process.client) {
-      const { status } = error.response
+      const { status } = error.response || {}
 
       if (status >= 500) {
         swal({
