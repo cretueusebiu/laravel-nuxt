@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\OAuthProvider;
 use App\Http\Controllers\Controller;
+use App\Exceptions\EmailTakenException;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -46,16 +47,13 @@ class OAuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->stateless()->user();
-
-        if (! $user = $this->findOrCreateUser($provider, $user)) {
-            return redirect(config('app.client_url').'?error=email_taken');
-        }
+        $user = $this->findOrCreateUser($provider, $user);
 
         $this->guard()->setToken(
             $token = $this->guard()->login($user)
         );
 
-        return view('oauthCallback', [
+        return view('oauth/callback', [
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->getPayload()->get('exp') - time(),
@@ -83,7 +81,7 @@ class OAuthController extends Controller
         }
 
         if (User::where('email', $user->getEmail())->exists()) {
-            return false;
+            throw new EmailTakenException;
         }
 
         return $this->createUser($provider, $user);
