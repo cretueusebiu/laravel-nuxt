@@ -15,10 +15,12 @@ const polyfills = [
 ]
 
 module.exports = {
+  // mode: 'spa',
+
   srcDir: __dirname,
 
   env: {
-    apiUrl: process.env.APP_URL || 'https://api.laravel-nuxt.test',
+    apiUrl: process.env.APP_URL || 'http://api.laravel-nuxt.test',
     appName: process.env.APP_NAME || 'Laravel-Nuxt',
     appLocale: process.env.APP_LOCALE || 'en',
     githubAuth: !!process.env.GITHUB_CLIENT_ID
@@ -55,12 +57,14 @@ module.exports = {
     '~plugins/i18n',
     '~plugins/vform',
     '~plugins/axios',
+    '~plugins/fontawesome',
+    // '~plugins/nuxt-client-init',
     { src: '~plugins/bootstrap', ssr: false },
-    '~plugins/fontawesome'
   ],
 
   modules: [
-    '@nuxtjs/router'
+    '@nuxtjs/router',
+    '~/modules/spa'
   ],
 
   build: {

@@ -31,8 +31,6 @@ export const mutations = {
   LOGOUT (state) {
     state.user = null
     state.token = null
-
-    Cookies.remove('token')
   },
 
   UPDATE_USER (state, { user }) {
@@ -48,7 +46,7 @@ export const actions = {
     Cookies.set('token', token, { expires: remember ? 365 : null })
   },
 
-  async fetchUser ({ commit, ...rest }) {
+  async fetchUser ({ commit }) {
     try {
       const { data } = await axios.get('/user')
 
@@ -68,6 +66,8 @@ export const actions = {
     try {
       await axios.post('/logout')
     } catch (e) { }
+
+    Cookies.remove('token')
 
     commit('LOGOUT')
   },
