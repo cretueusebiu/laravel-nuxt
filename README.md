@@ -15,6 +15,7 @@
 - Laravel 5.5
 - Nuxt 1.0
 - VueI18n
+- SSR or SPA 
 - Authentication with JWT
 - Socialite integration
 - Bootstrap 4 + Font Awesome 5
