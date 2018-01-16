@@ -3,21 +3,32 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const Home = () => import('~/pages/home').then(m => m.default || m)
+const Welcome = () => import('~/pages/welcome').then(m => m.default || m)
+
+const Login = () => import('~/pages/auth/login').then(m => m.default || m)
+const Register = () => import('~/pages/auth/register').then(m => m.default || m)
+const PasswordReset = () => import('~/pages/auth/password/reset').then(m => m.default || m)
+const PasswordRequest = () => import('~/pages/auth/password/email').then(m => m.default || m)
+
+const Settings = () => import('~/pages/settings/index').then(m => m.default || m)
+const SettingsProfile = () => import('~/pages/settings/profile').then(m => m.default || m)
+const SettingsPassword = () => import('~/pages/settings/password').then(m => m.default || m)
+
 const routes = [
-  { path: '/', name: 'welcome', component: require('~/pages/welcome').default },
+  { path: '/', name: 'welcome', component: Welcome },
+  { path: '/home', name: 'home', component: Home },
 
-  { path: '/home', name: 'home', component: require('~/pages/home').default },
+  { path: '/login', name: 'login', component: Login },
+  { path: '/register', name: 'register', component: Register },
+  { path: '/password/reset', name: 'password.request', component: PasswordRequest },
+  { path: '/password/reset/:token', name: 'password.reset', component: PasswordReset },
 
-  { path: '/settings', component: require('~/pages/settings/index').default, children: [
+  { path: '/settings', component: Settings, children: [
     { path: '', redirect: { name: 'settings.profile' }},
-    { path: 'profile', name: 'settings.profile', component: require('~/pages/settings/profile').default },
-    { path: 'password', name: 'settings.password', component: require('~/pages/settings/password').default }
-  ] },
-
-  { path: '/login', name: 'login', component: require('~/pages/auth/login').default },
-  { path: '/register', name: 'register', component: require('~/pages/auth/register').default },
-  { path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email').default },
-  { path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset').default }
+    { path: 'profile', name: 'settings.profile', component: SettingsProfile },
+    { path: 'password', name: 'settings.password', component: SettingsPassword }
+  ] }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {
