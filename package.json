@@ -19,7 +19,7 @@
     "dotenv": "^4.0.0",
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.0",
-    "nuxt": "^1.0.0",
+    "nuxt": "^1.1.1",
     "popper.js": "^1.12.9",
     "sweetalert2": "^7.3.5",
     "vform": "^0.8.1",

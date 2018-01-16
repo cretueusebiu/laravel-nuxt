@@ -4202,9 +4202,9 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nuxt@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.0.0.tgz#ca8e41a068d074e84ac48e3688b16fedc76612ce"
+nuxt@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-1.1.1.tgz#a4fbeafb243b8431c317834c013a8b7d0d7b74f1"
   dependencies:
     "@nuxtjs/youch" "^4.2.3"
     ansi-html "^0.0.7"
