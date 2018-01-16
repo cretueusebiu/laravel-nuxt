@@ -1,5 +1,3 @@
-const webpack = require('webpack')
-
 require('dotenv').config()
 
 const polyfills = [
@@ -49,7 +47,7 @@ module.exports = {
   },
 
   css: [
-    { src: '~assets/sass/app.scss', lang: 'lesscss' }
+    { src: '~assets/sass/app.scss', lang: 'scss' }
   ],
 
   plugins: [
@@ -68,20 +66,6 @@ module.exports = {
   ],
 
   build: {
-    extractCSS: true,
-
-    vendor: [
-      'vform', 'axios', 'jquery', 'bootstrap',
-      'js-cookie', 'popper.js', 'sweetalert2', 'vue-i18n'
-    ],
-
-    plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default']
-      })
-    ]
+    extractCSS: true
   }
 }
