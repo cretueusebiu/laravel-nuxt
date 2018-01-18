@@ -11,16 +11,16 @@ module.exports = function () {
 
   const publicDir = path.resolve('./public' + this.options.build.publicPath)
 
-  this.nuxt.hook('generate:done', () => {
-    this.nuxt.renderer.renderRoute('/', { url: '/' }).then(({ html }) => {
-      fs.removeSync(publicDir)
+  this.nuxt.hook('generate:done', async () => {
+    const { html } = await this.nuxt.renderer.renderRoute('/', { url: '/' })
 
-      fs.copySync(this.options.buildDir + '/dist', publicDir)
-      fs.writeFileSync(publicDir + '/index.html', html)
+    fs.removeSync(publicDir)
 
-      try {
-        fs.removeSync(path.resolve('./dist'))
-      } catch (e) {}
-    })
+    fs.copySync(this.options.buildDir + '/dist', publicDir)
+    fs.writeFileSync(publicDir + '/index.html', html)
+
+    try {
+      fs.removeSync(path.resolve('./dist'))
+    } catch (e) {}
   })
 }
