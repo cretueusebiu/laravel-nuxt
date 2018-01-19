@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5 - 2018-01-19
+
+- Upgrade to Bootstrap 4
+
 ## 1.0.4 - 2018-01-18
 
 - Fixed spa mode
