@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6 - 2018-01-22
+
+- Fixed axios authorization header
+- Added auth middleware to settings page
+
 ## 1.0.5 - 2018-01-19
 
 - Upgrade to Bootstrap 4
