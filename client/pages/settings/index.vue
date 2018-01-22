@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  loading: false,
+  middleware: 'auth',
 
   computed: {
     tabs () {
