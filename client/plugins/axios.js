@@ -51,8 +51,8 @@ export default ({ app, store, redirect }) => {
         reverseButtons: true,
         confirmButtonText: app.i18n.t('ok'),
         cancelButtonText: app.i18n.t('cancel')
-      }).then(async () => {
-        await store.dispatch('auth/logout')
+      }).then(() => {
+        store.commit('auth/LOGOUT')
 
         redirect({ name: 'login' })
       })
