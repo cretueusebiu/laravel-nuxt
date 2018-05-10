@@ -5,7 +5,7 @@
     </div>
 
     <div class="card-body">
-      <slot></slot>
+      <slot/>
     </div>
   </div>
 </template>
@@ -14,6 +14,8 @@
 export default {
   name: 'Card',
 
-  props: ['title']
+  props: {
+    title: { type: String, default: null }
+  }
 }
 </script>

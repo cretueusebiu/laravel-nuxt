@@ -24,11 +24,13 @@ const routes = [
   { path: '/password/reset', name: 'password.request', component: PasswordRequest },
   { path: '/password/reset/:token', name: 'password.reset', component: PasswordReset },
 
-  { path: '/settings', component: Settings, children: [
-    { path: '', redirect: { name: 'settings.profile' }},
-    { path: 'profile', name: 'settings.profile', component: SettingsProfile },
-    { path: 'password', name: 'settings.password', component: SettingsPassword }
-  ] }
+  { path: '/settings',
+    component: Settings,
+    children: [
+      { path: '', redirect: { name: 'settings.profile' } },
+      { path: 'profile', name: 'settings.profile', component: SettingsProfile },
+      { path: 'password', name: 'settings.password', component: SettingsPassword }
+    ] }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {

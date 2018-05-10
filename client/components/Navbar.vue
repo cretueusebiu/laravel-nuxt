@@ -5,14 +5,14 @@
         {{ appName }}
       </router-link>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarToggler" aria-controls="navbarToggler"
-        aria-expanded="false" :aria-label="$t('toggle_navigation')"
+      <button :aria-label="$t('toggle_navigation')" class="navbar-toggler" type="button"
+              data-toggle="collapse" data-target="#navbarToggler"
+              aria-controls="navbarToggler" aria-expanded="false"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"/>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarToggler">
+      <div id="navbarToggler" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <locale-dropdown/>
           <!-- <li class="nav-item">
@@ -24,7 +24,7 @@
           <!-- Authenticated -->
           <li v-if="user" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark"
-              href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
               {{ user.name }}
             </a>
@@ -34,8 +34,8 @@
                 {{ $t('settings') }}
               </router-link>
 
-              <div class="dropdown-divider"></div>
-              <a @click.prevent="logout" class="dropdown-item pl-3"  href="#">
+              <div class="dropdown-divider"/>
+              <a class="dropdown-item pl-3" href="#" @click.prevent="logout">
                 <fa icon="sign-out-alt" fixed-width/>
                 {{ $t('logout') }}
               </a>
@@ -65,6 +65,10 @@ import { mapGetters } from 'vuex'
 import LocaleDropdown from './LocaleDropdown'
 
 export default {
+  components: {
+    LocaleDropdown
+  },
+
   data: () => ({
     appName: process.env.appName
   }),
@@ -72,10 +76,6 @@ export default {
   computed: mapGetters({
     user: 'auth/user'
   }),
-
-  components: {
-    LocaleDropdown
-  },
 
   methods: {
     async logout () {
