@@ -12,8 +12,8 @@
 
 ## Features
 
-- Laravel 5.5
-- Nuxt 1.0
+- Laravel 5.6
+- Nuxt 1.4
 - VueI18n
 - SSR or SPA 
 - Authentication with JWT
