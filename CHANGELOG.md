@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 - 2018-05-10
+
+- Upgrade to Laravel 5.6
+- Update npm dependencies
+- Fixed oauth popup
+- Fixed session expired alert
+- Lint with eslint-plugin-vue and eslint-config-standard
+
 ## 1.0.6 - 2018-01-22
 
 - Fixed axios authorization header
