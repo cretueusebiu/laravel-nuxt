@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Upgrade to Nuxt 2.7
+- SPA mode by default
+- Update npm dependencies
+
 ## 1.1.0 - 2018-05-10
 
 - Upgrade to Laravel 5.6
