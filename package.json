@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.12",
     "@fortawesome/vue-fontawesome": "^0.0.22",
     "@nuxtjs/router": "^1.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bootstrap": "^4.1.1",
     "dotenv": "^5.0.1",
     "jquery": "^3.4.0",
