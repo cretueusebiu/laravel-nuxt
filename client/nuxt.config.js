@@ -63,7 +63,7 @@ module.exports = {
           const publicDir = join(builder.nuxt.options.rootDir, 'public', '_nuxt')
           removeSync(publicDir)
           copySync(join(builder.nuxt.options.generate.dir, '_nuxt'), publicDir)
-          copySync(join(builder.nuxt.options.generate.dir, '200.html', ), join(publicDir, 'index.html'))
+          copySync(join(builder.nuxt.options.generate.dir, '200.html'), join(publicDir, 'index.html'))
         }
       }
     }

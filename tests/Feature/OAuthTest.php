@@ -12,7 +12,7 @@ use Laravel\Socialite\Two\User as SocialiteUser;
 
 class OAuthTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -34,7 +34,7 @@ class OAuthTest extends TestCase
     {
         $this->mockSocialite('github');
 
-        $this->postJson('/oauth/github')
+        $this->postJson('/api/oauth/github')
             ->assertSuccessful()
             ->assertJson(['url' => 'https://url-to-provider']);
     }
@@ -52,7 +52,7 @@ class OAuthTest extends TestCase
 
         $this->withoutExceptionHandling();
 
-        $this->get('/oauth/github/callback')
+        $this->get('/api/oauth/github/callback')
             ->assertText('token')
             ->assertSuccessful();
 
@@ -86,7 +86,7 @@ class OAuthTest extends TestCase
             'refreshToken' => 'updated-refresh-token',
         ]);
 
-        $this->get('/oauth/github/callback')
+        $this->get('/api/oauth/github/callback')
             ->assertText('token')
             ->assertSuccessful();
 
@@ -104,7 +104,7 @@ class OAuthTest extends TestCase
 
         $this->mockSocialite('github', ['email' => 'test@example.com']);
 
-        $this->get('/oauth/github/callback')
+        $this->get('/api/oauth/github/callback')
             ->assertText('Email already taken.')
             ->assertTextMissing('token')
             ->assertStatus(400);

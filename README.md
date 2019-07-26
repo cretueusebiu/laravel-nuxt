@@ -12,14 +12,12 @@
 
 ## Features
 
-- Laravel 5.6
-- Nuxt 2.7
-- VueI18n
-- SPA or SSR 
-- Authentication with JWT
+- Nuxt 2.8
+- Laravel 5.8
+- SPA or SSR
 - Socialite integration
-- Bootstrap 4 + Font Awesome 5
-- Login, register, password reset and profile pages
+- VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
+- Login, register, email verification and password reset
 
 ## Installation
 

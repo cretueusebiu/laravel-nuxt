@@ -18,7 +18,8 @@
 
     <div class="text-center">
       <div class="title mb-4">
-        {{ title }}
+        <span class="laravel">Laravel</span><span class="nuxt">Nuxt</span>
+        <!-- {{ title }} -->
       </div>
 
       <div class="links">
@@ -57,5 +58,13 @@ export default {
 
 .title {
   font-size: 85px;
+}
+
+.laravel {
+  color: #2e495e;
+}
+
+.nuxt {
+  color: #00c48d;
 }
 </style>

@@ -10,7 +10,7 @@ class LoginTest extends TestCase
     /** @var \App\User */
     protected $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -20,9 +20,9 @@ class LoginTest extends TestCase
     /** @test */
     public function authenticate()
     {
-        $this->postJson('/login', [
+        $this->postJson('/api/login', [
             'email' => $this->user->email,
-            'password' => 'secret',
+            'password' => 'password',
         ])
         ->assertSuccessful()
         ->assertJsonStructure(['token', 'expires_in'])
@@ -33,7 +33,7 @@ class LoginTest extends TestCase
     public function fetch_the_current_user()
     {
         $this->actingAs($this->user)
-            ->getJson('/user')
+            ->getJson('/api/user')
             ->assertSuccessful()
             ->assertJsonStructure(['id', 'name', 'email']);
     }
@@ -41,15 +41,15 @@ class LoginTest extends TestCase
     /** @test */
     public function log_out()
     {
-        $token = $this->postJson('/login', [
+        $token = $this->postJson('/api/login', [
             'email' => $this->user->email,
-            'password' => 'secret',
+            'password' => 'password',
         ])->json()['token'];
 
-        $this->postJson("/logout?token=$token")
+        $this->postJson("/api/logout?token=$token")
             ->assertSuccessful();
 
-        $this->getJson("/user?token=$token")
+        $this->getJson("/api/user?token=$token")
             ->assertStatus(401);
     }
 }
