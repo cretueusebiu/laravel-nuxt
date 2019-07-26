@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
-    <navbar/>
+    <navbar />
 
     <div class="container mt-4">
-      <nuxt/>
+      <nuxt />
     </div>
   </div>
 </template>
