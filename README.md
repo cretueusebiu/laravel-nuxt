@@ -35,15 +35,21 @@
 npm run dev
 ```
 
-### Production with SSR
+You can access your application at `http://localhost:3000`.
 
-If you want to enable server side rendering follow the next steps:
+### Production
+
+```bash
+npm run build
+```
+
+You can access your application the url you set `APP_URL` to.
+
+### Enable SSR
 
 - Remove `mode: 'spa'` and `'~plugins/nuxt-client-init'` from `client/nuxt.config.js` 
-- Add `API_URL=http://api.example.com/api` and `CLIENT_URL=http://example.com` in your `.env`
+- Edit `.env` to set `APP_URL=http://api.example.com` and `CLIENT_URL=http://example.com`
 - Run `npm run build` and `npm run start`
-
-Make sure to read the [Nuxt docs](https://nuxtjs.org/).
 
 #### Nginx Proxy
 
@@ -88,6 +94,8 @@ After each deploy you'll need to restart the process:
 ```bash
 pm2 restart laravel-nuxt 
 ```
+
+Make sure to read the [Nuxt docs](https://nuxtjs.org/).
 
 ## Notes
 
