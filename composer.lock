@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c35ea2d91691e4e9dce9066ea10f9594",
+    "content-hash": "87e1af3109de24afc2c6c776f33b9032",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1936,25 +1936,25 @@
         },
         {
             "name": "spatie/laravel-cors",
-            "version": "1.5.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-cors.git",
-                "reference": "8f822676376bac76dd791d13252062e3bcc22a43"
+                "reference": "3395a43f797b1e946a1697be644c3cb4d8dc83dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-cors/zipball/8f822676376bac76dd791d13252062e3bcc22a43",
-                "reference": "8f822676376bac76dd791d13252062e3bcc22a43",
+                "url": "https://api.github.com/repos/spatie/laravel-cors/zipball/3395a43f797b1e946a1697be644c3cb4d8dc83dd",
+                "reference": "3395a43f797b1e946a1697be644c3cb4d8dc83dd",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
-                "php": "^7.2"
+                "php": "^7.0"
             },
             "require-dev": {
                 "orchestra/testbench": "3.5.*|3.6.*|3.7.*|3.8.*",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^6.5.4|^7.0"
             },
             "type": "library",
             "extra": {
@@ -1991,7 +1991,7 @@
                 "request",
                 "spatie"
             ],
-            "time": "2019-07-19T13:46:27+00:00"
+            "time": "2019-02-27T07:56:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
