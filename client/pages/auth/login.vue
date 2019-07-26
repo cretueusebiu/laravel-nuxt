@@ -7,9 +7,8 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email"
-                     class="form-control">
-              <has-error :form="form" field="email"/>
+              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email" class="form-control">
+              <has-error :form="form" field="email" />
             </div>
           </div>
 
@@ -17,15 +16,14 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password"
-                     class="form-control">
-              <has-error :form="form" field="password"/>
+              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password" class="form-control">
+              <has-error :form="form" field="password" />
             </div>
           </div>
 
           <!-- Remember Me -->
           <div class="form-group row">
-            <div class="col-md-3"/>
+            <div class="col-md-3" />
             <div class="col-md-7 d-flex">
               <checkbox v-model="remember" name="remember">
                 {{ $t('remember_me') }}
@@ -45,7 +43,7 @@
               </v-button>
 
               <!-- GitHub Login Button -->
-              <login-with-github/>
+              <login-with-github />
             </div>
           </div>
         </form>
@@ -72,8 +70,15 @@ export default {
 
   methods: {
     async login () {
+      let data
+
       // Submit the form.
-      const { data } = await this.form.post('/login')
+      try {
+        const response = await this.form.post('/login')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       // Save the token.
       this.$store.dispatch('auth/saveToken', {
