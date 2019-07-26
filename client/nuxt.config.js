@@ -44,7 +44,7 @@ module.exports = {
     '~plugins/axios',
     '~plugins/fontawesome',
     '~plugins/nuxt-client-init', // Comment this for SSR
-    { src: '~plugins/bootstrap', ssr: false }
+    { src: '~plugins/bootstrap', mode: 'client' }
   ],
 
   modules: [
