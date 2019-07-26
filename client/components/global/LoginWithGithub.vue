@@ -1,7 +1,7 @@
 <template>
   <button v-if="githubAuth" type="button" class="btn btn-dark ml-auto" @click="login">
     {{ $t('login_with') }}
-    <fa :icon="['fab', 'github']"/>
+    <fa :icon="['fab', 'github']" />
   </button>
 </template>
 
@@ -37,7 +37,8 @@ export default {
      * @param {MessageEvent} e
      */
     onMessage (e) {
-      if (e.origin !== process.env.apiUrl) {
+      if (!process.env.apiUrl.includes(e.origin)) {
+        // throw new Error('Origin not matching')
         return
       }
 

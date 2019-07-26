@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
-      <card :title="$t('reset_password')">
+      <card :title="$t('verify_email')">
         <form @submit.prevent="send" @keydown="form.onKeydown($event)">
           <alert-success :form="form" :message="status" />
 
@@ -9,7 +9,7 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email" class="form-control">
+              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
               <has-error :form="form" field="email" />
             </div>
           </div>
@@ -18,7 +18,7 @@
           <div class="form-group row">
             <div class="col-md-9 ml-md-auto">
               <v-button :loading="form.busy">
-                {{ $t('send_password_reset_link') }}
+                {{ $t('send_verification_link') }}
               </v-button>
             </div>
           </div>
@@ -32,8 +32,10 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('reset_password') }
+  middleware: 'guest',
+
+  metaInfo () {
+    return { title: this.$t('verify_email') }
   },
 
   data: () => ({
@@ -43,9 +45,15 @@ export default {
     })
   }),
 
+  created () {
+    if (this.$route.query.email) {
+      this.form.email = this.$route.query.email
+    }
+  },
+
   methods: {
     async send () {
-      const { data } = await this.form.post('/password/email')
+      const { data } = await this.form.post('/email/resend')
 
       this.status = data.status
 

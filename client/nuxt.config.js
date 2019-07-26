@@ -1,25 +1,15 @@
 require('dotenv').config()
-
-const polyfills = [
-  'Promise',
-  'Object.assign',
-  'Object.values',
-  'Array.prototype.find',
-  'Array.prototype.findIndex',
-  'Array.prototype.includes',
-  'String.prototype.includes',
-  'String.prototype.startsWith',
-  'String.prototype.endsWith'
-]
+const { join } = require('path')
+const { copySync, removeSync } = require('fs-extra')
 
 module.exports = {
-  // mode: 'spa',
+  mode: 'spa', // Comment this for SSR
 
   srcDir: __dirname,
 
   env: {
-    apiUrl: process.env.APP_URL || 'http://api.laravel-nuxt.test',
-    appName: process.env.APP_NAME || 'Laravel-Nuxt',
+    apiUrl: process.env.API_URL || process.env.APP_URL + '/api',
+    appName: process.env.APP_NAME || 'Laravel Nuxt',
     appLocale: process.env.APP_LOCALE || 'en',
     githubAuth: !!process.env.GITHUB_CLIENT_ID
   },
@@ -34,9 +24,6 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
-      { src: `https://cdn.polyfill.io/v2/polyfill.min.js?features=${polyfills.join(',')}` }
     ]
   },
 
@@ -56,16 +43,29 @@ module.exports = {
     '~plugins/vform',
     '~plugins/axios',
     '~plugins/fontawesome',
-    // '~plugins/nuxt-client-init',
-    { src: '~plugins/bootstrap', ssr: false }
+    '~plugins/nuxt-client-init', // Comment this for SSR
+    { src: '~plugins/bootstrap', mode: 'client' }
   ],
 
   modules: [
-    '@nuxtjs/router',
-    '~/modules/spa'
+    '@nuxtjs/router'
   ],
 
   build: {
     extractCSS: true
+  },
+
+  hooks: {
+    build: {
+      done (builder) {
+        // Copy dist files to public/_nuxt
+        if (builder.nuxt.options.dev === false && builder.nuxt.options.mode === 'spa') {
+          const publicDir = join(builder.nuxt.options.rootDir, 'public', '_nuxt')
+          removeSync(publicDir)
+          copySync(join(builder.nuxt.options.generate.dir, '_nuxt'), publicDir)
+          copySync(join(builder.nuxt.options.generate.dir, '200.html'), join(publicDir, 'index.html'))
+        }
+      }
+    }
   }
 }

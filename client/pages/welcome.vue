@@ -18,15 +18,12 @@
 
     <div class="text-center">
       <div class="title mb-4">
-        {{ title }}
+        <span class="laravel">Laravel</span><span class="nuxt">Nuxt</span>
+        <!-- {{ title }} -->
       </div>
 
       <div class="links">
-        <a href="https://laravel.com/docs">Documentation</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
+        <a href="https://github.com/cretueusebiu/laravel-nuxt">github.com/cretueusebiu/laravel-nuxt</a>
       </div>
     </div>
   </div>
@@ -61,5 +58,13 @@ export default {
 
 .title {
   font-size: 85px;
+}
+
+.laravel {
+  color: #2e495e;
+}
+
+.nuxt {
+  color: #00c48d;
 }
 </style>

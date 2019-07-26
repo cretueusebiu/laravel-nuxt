@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0 - 2019-07-26
+
+- Upgrade to Nuxt 2.8
+- Upgrade to Laravel 5.8
+- Added email verification
+- SPA mode by default
+- Update npm dependencies
+- Removed yarn.lock in favor of package-lock.json
+
 ## 1.1.0 - 2018-05-10
 
 - Upgrade to Laravel 5.6

@@ -3,15 +3,14 @@
     <div class="col-lg-8 m-auto">
       <card :title="$t('reset_password')">
         <form @submit.prevent="reset" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status"/>
+          <alert-success :form="form" :message="status" />
 
           <!-- Email -->
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email"
-                     class="form-control" readonly>
-              <has-error :form="form" field="email"/>
+              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email" class="form-control" readonly>
+              <has-error :form="form" field="email" />
             </div>
           </div>
 
@@ -19,9 +18,8 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password"
-                     class="form-control">
-              <has-error :form="form" field="password"/>
+              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password" class="form-control">
+              <has-error :form="form" field="password" />
             </div>
           </div>
 
@@ -29,16 +27,17 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('confirm_password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" type="password" name="password_confirmation"
-                     class="form-control">
-              <has-error :form="form" field="password_confirmation"/>
+              <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" type="password" name="password_confirmation" class="form-control">
+              <has-error :form="form" field="password_confirmation" />
             </div>
           </div>
 
           <!-- Submit Button -->
           <div class="form-group row">
             <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">{{ $t('reset_password') }}</v-button>
+              <v-button :loading="form.busy">
+                {{ $t('reset_password') }}
+              </v-button>
             </div>
           </div>
         </form>

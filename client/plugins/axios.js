@@ -11,13 +11,13 @@ export default ({ app, store, redirect }) => {
   }
 
   // Request interceptor
-  axios.interceptors.request.use(request => {
+  axios.interceptors.request.use((request) => {
     request.baseURL = process.env.apiUrl
 
     const token = store.getters['auth/token']
 
     if (token) {
-      request.headers.common['Authorization'] = `Bearer ${token}`
+      request.headers.common.Authorization = `Bearer ${token}`
     }
 
     const locale = store.getters['lang/locale']
@@ -29,7 +29,7 @@ export default ({ app, store, redirect }) => {
   })
 
   // Response interceptor
-  axios.interceptors.response.use(response => response, error => {
+  axios.interceptors.response.use(response => response, (error) => {
     const { status } = error.response || {}
 
     if (status >= 500) {

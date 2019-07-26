@@ -12,14 +12,12 @@
 
 ## Features
 
-- Laravel 5.6
-- Nuxt 1.4
-- VueI18n
-- SSR or SPA 
-- Authentication with JWT
+- Nuxt 2.8
+- Laravel 5.8
+- SPA or SSR
 - Socialite integration
-- Bootstrap 4 + Font Awesome 5
-- Login, register, password reset and profile pages
+- VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
+- Login, register, email verification and password reset
 
 ## Installation
 
@@ -27,7 +25,7 @@
 - Edit `.env` to set your database connection details and `APP_URL` (the url to your Laravel application)
 - (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
 - `php artisan migrate`
-- `yarn` / `npm install`
+- `npm install`
 
 ## Usage
 
@@ -37,12 +35,21 @@
 npm run dev
 ```
 
-### Production with SSR
+You can access your application at `http://localhost:3000`.
+
+### Production
 
 ```bash
 npm run build
-npm run start
 ```
+
+You can access your application the url you set `APP_URL` to.
+
+### Enable SSR
+
+- Remove `mode: 'spa'` and `'~plugins/nuxt-client-init'` from `client/nuxt.config.js` 
+- Edit `.env` to set `APP_URL=http://api.example.com` and `CLIENT_URL=http://example.com`
+- Run `npm run build` and `npm run start`
 
 #### Nginx Proxy
 
@@ -51,7 +58,7 @@ For Nginx you can add a proxy using the follwing location block:
 ```
 server {
     location / {
-        proxy_pass http://HOST:PORT;
+        proxy_pass http://http://127.0.0.1:3000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -60,8 +67,6 @@ server {
     }
 }
 ```
-
-Where `HOST` is the ip address of your server and `PORT` is the port you're running the application (3000 by default).
 
 #### Process Manager
 
@@ -89,15 +94,6 @@ After each deploy you'll need to restart the process:
 ```bash
 pm2 restart laravel-nuxt 
 ```
-
-### Production without SSR
-
-If you don't want server side rendering you can use the [mode](https://nuxtjs.org/api/configuration-mode#the-mode-property) option:
-
-- Uncomment `mode: 'spa'` and `'~plugins/nuxt-client-init'` in `client/nuxt.config.js` 
-- Uncomment `// ->prefix('api')` in `app/Providers/RouteServiceProvider.php` 
-- Set `APP_URL=http://example.com/api` and `CLIENT_URL=http://example.com` in your `.env`
-- Run `npm run build`
 
 Make sure to read the [Nuxt docs](https://nuxtjs.org/).
 

@@ -17,7 +17,20 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
             ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', url(config('app.client_url').'/password/reset/'.$this->token).'?email='.urlencode($notifiable->email))
+            ->action('Reset Password', $this->resetUrl($notifiable))
             ->line('If you did not request a password reset, no further action is required.');
+    }
+
+    /**
+     * Get the reset password URL for the given notifiable.
+     *
+     * @param  mixed  $notifiable
+     * @return string
+     */
+    protected function resetUrl($notifiable)
+    {
+        $appUrl = config('app.client_url', config('app.url'));
+
+        return url("$appUrl/password/reset/$this->token").'?email='.urlencode($notifiable->email);
     }
 }
