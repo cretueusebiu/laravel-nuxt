@@ -97,6 +97,16 @@ pm2 restart laravel-nuxt
 
 Make sure to read the [Nuxt docs](https://nuxtjs.org/).
 
+## Socialite
+
+This project comes with GitHub as an example for [Laravel Socialite](https://laravel.com/docs/5.8/socialite).
+
+To enable the provider create a new GitHub application and use `https://example.com/api/oauth/github/callback` as the Authorization callback URL.
+
+Edit `.env` and set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` with the keys form your GitHub application.
+
+For other providers you may need to set the appropriate keys in `config/services.php` and redirect url in `OAuthController.php`.
+
 ## Notes
 
 - This project uses [router-module](https://github.com/nuxt-community/router-module), so you have to add the routes manually in `client/router.js`.
