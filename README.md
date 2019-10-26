@@ -13,7 +13,7 @@
 ## Features
 
 - Nuxt 2.8
-- Laravel 5.8
+- Laravel 6
 - SPA or SSR
 - Socialite integration
 - VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
