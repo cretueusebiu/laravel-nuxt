@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0 - 2019-11-01
+
+- Upgrade to Laravel 6
+
 ## 2.0.0 - 2019-07-26
 
 - Upgrade to Nuxt 2.8
