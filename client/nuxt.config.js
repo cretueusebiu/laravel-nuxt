@@ -64,6 +64,7 @@ module.exports = {
           removeSync(publicDir)
           copySync(join(generator.nuxt.options.generate.dir, '_nuxt'), publicDir)
           copySync(join(generator.nuxt.options.generate.dir, '200.html'), join(publicDir, 'index.html'))
+          removeSync(generator.nuxt.options.generate.dir)
         }
       }
     }
