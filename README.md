@@ -12,7 +12,7 @@
 
 ## Features
 
-- Nuxt 2.8
+- Nuxt 2.11
 - Laravel 6
 - SPA or SSR
 - Socialite integration

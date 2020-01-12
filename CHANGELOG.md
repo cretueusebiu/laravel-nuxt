@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.0 - 2020-01-12
+
+- Upgrade to Nuxt 2.11
+- Fixed build error [#85](https://github.com/cretueusebiu/laravel-nuxt/pull/85)
+
 ## 2.1.0 - 2019-11-01
 
 - Upgrade to Laravel 6
