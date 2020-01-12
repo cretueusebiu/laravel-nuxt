@@ -6,9 +6,11 @@ php:
 
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - travis_retry yarn install
 
 script:
   - vendor/bin/phpunit
+  - yarn build
 
 notifications:
   email: false
