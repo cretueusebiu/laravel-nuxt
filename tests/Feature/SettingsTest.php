@@ -21,7 +21,7 @@ class SettingsTest extends TestCase
     /** @test */
     public function update_profile_info()
     {
-        $this->actingAs($this->user)
+        $this->actingas($this->user)
             ->patchJson('/api/settings/profile', [
                 'name' => 'Test User',
                 'email' => 'test@test.app',
