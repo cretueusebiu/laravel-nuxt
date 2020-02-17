@@ -8,7 +8,7 @@
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.4",
-        "laravel/socialite": "^4.0",
+        "laravel/socialite": "^4.3",
         "laravel/tinker": "~1.0",
         "spatie/laravel-cors": "1.6.*",
         "tymon/jwt-auth": "^1.0.0-rc.5"
