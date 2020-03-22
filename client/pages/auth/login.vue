@@ -56,6 +56,8 @@
 import Form from 'vform'
 
 export default {
+  middleware: 'guest',
+
   head () {
     return { title: this.$t('login') }
   },

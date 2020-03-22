@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User;
+use App\Models\User;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -13,8 +13,8 @@ class RegisterTest extends TestCase
         $this->postJson('/api/register', [
             'name' => 'Test User',
             'email' => 'test@test.app',
-            'password' => 'secret',
-            'password_confirmation' => 'secret',
+            'password' => 'secret123',
+            'password_confirmation' => 'secret123',
         ])
         ->assertSuccessful()
         ->assertJsonStructure(['id', 'name', 'email']);

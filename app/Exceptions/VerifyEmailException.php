@@ -7,7 +7,7 @@ use Illuminate\Validation\ValidationException;
 class VerifyEmailException extends ValidationException
 {
     /**
-     * @param  \App\User $user
+     * @param  \App\Models\User $user
      * @return static
      */
     public static function forUser($user)

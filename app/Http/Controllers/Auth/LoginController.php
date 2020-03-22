@@ -11,6 +11,17 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
     use AuthenticatesUsers;
 
     /**
@@ -23,6 +34,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function username()
+    {
+        return 'email';
+    }
+
     /**
      * Attempt to log the user into the application.
      *
@@ -31,7 +47,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $token = $this->guard()->attempt($this->credentials($request));
+        $token = (string) $this->guard()->attempt($this->credentials($request));
 
         if (! $token) {
             return false;
@@ -58,12 +74,11 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         $token = (string) $this->guard()->getToken();
-        $expiration = $this->guard()->getPayload()->get('exp');
 
         return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $expiration - time(),
+            'expires_in' => $this->guard()->getTTL() * 60,
         ]);
     }
 

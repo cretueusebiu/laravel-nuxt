@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Exceptions\EmailTakenException;
 use App\Http\Controllers\Controller;
-use App\OAuthProvider;
-use App\User;
+use App\Models\OAuthProvider;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -50,13 +50,13 @@ class OAuthController extends Controller
         $user = $this->findOrCreateUser($provider, $user);
 
         $this->guard()->setToken(
-            $token = $this->guard()->login($user)
+            $token = (string) $this->guard()->login($user)
         );
 
         return view('oauth/callback', [
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->getPayload()->get('exp') - time(),
+            'expires_in' => $this->guard()->getTTL() * 60,
         ]);
     }
 
