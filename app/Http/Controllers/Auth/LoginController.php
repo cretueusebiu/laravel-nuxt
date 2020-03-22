@@ -78,7 +78,7 @@ class LoginController extends Controller
         return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->getTTL() * 60,
+            'expires_in' => auth()->factory()->getTTL() * 60,
         ]);
     }
 
