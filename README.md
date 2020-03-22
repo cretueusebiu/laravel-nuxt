@@ -12,8 +12,8 @@
 
 ## Features
 
-- Nuxt 2.11
-- Laravel 6
+- Nuxt 2.12
+- Laravel 7
 - SPA or SSR
 - Socialite integration
 - VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
