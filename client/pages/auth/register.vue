@@ -109,10 +109,7 @@ export default {
         }
 
         // Save the token.
-        this.$store.dispatch('auth/saveToken', {
-          token: loginData.token,
-          remember: this.remember
-        })
+        this.$store.dispatch('auth/saveToken', { token: loginData.token })
 
         // Fetch the user.
         await this.$store.dispatch('auth/fetchUser')
