@@ -32,6 +32,7 @@
 import Form from 'vform'
 
 export default {
+  middleware: 'guest',
   head () {
     return { title: this.$t('reset_password') }
   },
@@ -45,7 +46,15 @@ export default {
 
   methods: {
     async send () {
-      const { data } = await this.form.post('/password/email')
+      let data
+
+      // Submit the form.
+      try {
+        const response = await this.form.post('/password/email')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       this.status = data.status
 

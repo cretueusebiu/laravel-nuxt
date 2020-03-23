@@ -67,6 +67,7 @@
 import Form from 'vform'
 
 export default {
+  middleware: 'guest',
   head () {
     return { title: this.$t('register') }
   },
@@ -80,24 +81,43 @@ export default {
     }),
     mustVerifyEmail: false
   }),
-
   methods: {
     async register () {
       // Register the user.
-      const { data } = await this.form.post('/register')
+      let data
+
+      // Submit the form.
+      try {
+        const response = await this.form.post('/register')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       // Must verify email fist.
-      if (data.status) {
+      if (typeof data !== 'undefined' && data.status) {
         this.mustVerifyEmail = true
       } else {
-        // Log in the user.
-        const { data: { token } } = await this.form.post('/login')
+        let loginData
+
+        // Submit the form.
+        try {
+          const response = await this.form.post('/login')
+          loginData = response.data
+        } catch (e) {
+          return
+        }
 
         // Save the token.
-        this.$store.dispatch('auth/saveToken', { token })
+        this.$store.dispatch('auth/saveToken', {
+          token: loginData.token,
+          remember: this.remember
+        })
 
-        // Update the user.
-        await this.$store.dispatch('auth/updateUser', { user: data })
+        // Fetch the user.
+        await this.$store.dispatch('auth/fetchUser')
+
+        await this.$store.dispatch('users/fetchUsers')
 
         // Redirect home.
         this.$router.push({ name: 'home' })

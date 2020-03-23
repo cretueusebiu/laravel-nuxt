@@ -53,7 +53,15 @@ export default {
 
   methods: {
     async send () {
-      const { data } = await this.form.post('/email/resend')
+      let data
+
+      // Submit the form.
+      try {
+        const response = await this.form.post('/email/resend')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       this.status = data.status
 
