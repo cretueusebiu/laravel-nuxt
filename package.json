@@ -16,7 +16,7 @@
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.11.0",
     "popper.js": "^1.16.0",
