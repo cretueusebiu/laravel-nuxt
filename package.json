@@ -29,7 +29,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "fs-extra": "^8.1.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.3.1"
   }
 }
