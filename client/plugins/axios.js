@@ -33,7 +33,7 @@ export default ({ app, store, redirect }) => {
     const { status } = error.response || {}
 
     if (status >= 500) {
-      swal({
+      swal.fire({
         type: 'error',
         title: app.i18n.t('error_alert_title'),
         text: app.i18n.t('error_alert_text'),
@@ -44,7 +44,7 @@ export default ({ app, store, redirect }) => {
     }
 
     if (status === 401 && store.getters['auth/check']) {
-      swal({
+      swal.fire({
         type: 'warning',
         title: app.i18n.t('token_expired_alert_title'),
         text: app.i18n.t('token_expired_alert_text'),
