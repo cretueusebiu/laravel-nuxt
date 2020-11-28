@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 - 2020-11-xx
+## 3.0.0 - 2020-11-28
 
 - Upgrade to Laravel 8
 - Update dependencies
