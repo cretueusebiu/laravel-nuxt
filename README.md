@@ -22,7 +22,7 @@
 ## Installation
 
 - `composer create-project --prefer-dist cretueusebiu/laravel-nuxt`
-- Edit `.env` to set your database connection details and `APP_URL` (the url to your Laravel application)
+- Edit `.env` and set your database connection details 
 - (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
 - `php artisan migrate`
 - `npm install`
@@ -32,11 +32,14 @@
 ### Development
 
 ```bash
+# start Laravel
 php artisan serve
+
+# start Nuxt
 npm run dev
 ```
 
-You can access your application at `http://localhost:3000`.
+Access your application at `http://localhost:3000`.
 
 ### Production
 
@@ -44,11 +47,9 @@ You can access your application at `http://localhost:3000`.
 npm run build
 ```
 
-You can access your application the url you set `APP_URL` to.
-
 ### Enable SSR
 
-- Set `ssr: true` in `client/nuxt.config.js` 
+- Edit `client/nuxt.config.js` and set `ssr: true` 
 - Edit `.env` to set `APP_URL=http://api.example.com` and `CLIENT_URL=http://example.com`
 - Run `npm run build` and `npm run start`
 
