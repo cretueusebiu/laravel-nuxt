@@ -40,16 +40,16 @@ import { mapGetters } from 'vuex'
 export default {
   scrollToTop: false,
 
-  head () {
-    return { title: this.$t('settings') }
-  },
-
   data: () => ({
     form: new Form({
       name: '',
       email: ''
     })
   }),
+
+  head () {
+    return { title: this.$t('settings') }
+  },
 
   computed: mapGetters({
     user: 'auth/user'

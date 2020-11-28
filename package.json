@@ -7,29 +7,29 @@
     "lint": "eslint --fix --ext .js,.vue client/"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-regular-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/router": "^1.5.0",
-    "axios": "^0.19.1",
-    "bootstrap": "^4.4.1",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
-    "nuxt": "^2.11.0",
-    "popper.js": "^1.16.0",
-    "sweetalert2": "^8.19.0",
+    "nuxt": "^2.14.7",
+    "popper.js": "^1.16.1",
+    "sweetalert2": "^10.10.4",
     "vform": "^1.0.1",
-    "vue-i18n": "^8.15.3"
+    "vue-i18n": "^8.22.2"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^1.1.2",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "fs-extra": "^8.1.0",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^7.3.1"
+    "@babel/eslint-parser": "^7.12.1",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "eslint": "^7.14.0",
+    "fs-extra": "^9.0.1",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0"
   }
 }

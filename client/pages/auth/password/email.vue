@@ -32,16 +32,16 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('reset_password') }
-  },
-
   data: () => ({
     status: '',
     form: new Form({
       email: ''
     })
   }),
+
+  head () {
+    return { title: this.$t('reset_password') }
+  },
 
   methods: {
     async send () {

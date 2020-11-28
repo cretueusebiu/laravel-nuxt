@@ -50,10 +50,6 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('reset_password') }
-  },
-
   data: () => ({
     status: '',
     form: new Form({
@@ -63,6 +59,10 @@ export default {
       password_confirmation: ''
     })
   }),
+
+  head () {
+    return { title: this.$t('reset_password') }
+  },
 
   created () {
     this.form.email = this.$route.query.email

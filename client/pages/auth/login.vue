@@ -56,10 +56,6 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('login') }
-  },
-
   data: () => ({
     form: new Form({
       email: '',
@@ -67,6 +63,10 @@ export default {
     }),
     remember: false
   }),
+
+  head () {
+    return { title: this.$t('login') }
+  },
 
   methods: {
     async login () {

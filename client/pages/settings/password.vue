@@ -39,16 +39,16 @@ import Form from 'vform'
 export default {
   scrollToTop: false,
 
-  head () {
-    return { title: this.$t('settings') }
-  },
-
   data: () => ({
     form: new Form({
       password: '',
       password_confirmation: ''
     })
   }),
+
+  head () {
+    return { title: this.$t('settings') }
+  },
 
   methods: {
     async update () {

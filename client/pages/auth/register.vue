@@ -67,10 +67,6 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('register') }
-  },
-
   data: () => ({
     form: new Form({
       name: '',
@@ -80,6 +76,10 @@ export default {
     }),
     mustVerifyEmail: false
   }),
+
+  head () {
+    return { title: this.$t('register') }
+  },
 
   methods: {
     async register () {
