@@ -51,10 +51,10 @@ export default {
   },
 
   methods: {
-    async update () {
-      await this.form.patch('/settings/password')
-
-      this.form.reset()
+    update () {
+      this.form.patch('/settings/password').then(() => {
+        this.form.reset()
+      })
     }
   }
 }

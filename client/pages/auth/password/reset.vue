@@ -72,12 +72,11 @@ export default {
   },
 
   methods: {
-    async reset () {
-      const { data } = await this.form.post('/password/reset')
-
-      this.status = data.status
-
-      this.form.reset()
+    reset () {
+      this.form.post('/password/reset').then(({ data }) => {
+        this.status = data.status
+        this.form.reset()
+      })
     }
   }
 }

@@ -85,8 +85,15 @@ export default {
 
   methods: {
     async register () {
+      let data
+
       // Register the user.
-      const { data } = await this.form.post('/register')
+      try {
+        const response = await this.form.post('/register')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       // Must verify email fist.
       if (data.status) {
