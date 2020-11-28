@@ -67,9 +67,7 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('register') }
-  },
+  middleware: 'guest',
 
   data: () => ({
     form: new Form({
@@ -81,10 +79,21 @@ export default {
     mustVerifyEmail: false
   }),
 
+  head () {
+    return { title: this.$t('register') }
+  },
+
   methods: {
     async register () {
+      let data
+
       // Register the user.
-      const { data } = await this.form.post('/register')
+      try {
+        const response = await this.form.post('/register')
+        data = response.data
+      } catch (e) {
+        return
+      }
 
       // Must verify email fist.
       if (data.status) {

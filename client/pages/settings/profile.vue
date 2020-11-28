@@ -40,16 +40,16 @@ import { mapGetters } from 'vuex'
 export default {
   scrollToTop: false,
 
-  head () {
-    return { title: this.$t('settings') }
-  },
-
   data: () => ({
     form: new Form({
       name: '',
       email: ''
     })
   }),
+
+  head () {
+    return { title: this.$t('settings') }
+  },
 
   computed: mapGetters({
     user: 'auth/user'
@@ -63,10 +63,10 @@ export default {
   },
 
   methods: {
-    async update () {
-      const { data } = await this.form.patch('/settings/profile')
-
-      this.$store.dispatch('auth/updateUser', { user: data })
+    update () {
+      this.form.patch('/settings/profile').then(({ data: user }) => {
+        this.$store.dispatch('auth/updateUser', { user })
+      })
     }
   }
 }

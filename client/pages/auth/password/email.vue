@@ -32,10 +32,6 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('reset_password') }
-  },
-
   data: () => ({
     status: '',
     form: new Form({
@@ -43,13 +39,16 @@ export default {
     })
   }),
 
+  head () {
+    return { title: this.$t('reset_password') }
+  },
+
   methods: {
-    async send () {
-      const { data } = await this.form.post('/password/email')
-
-      this.status = data.status
-
-      this.form.reset()
+    send () {
+      this.form.post('/password/email').then(({ data }) => {
+        this.status = data.status
+        this.form.reset()
+      })
     }
   }
 }

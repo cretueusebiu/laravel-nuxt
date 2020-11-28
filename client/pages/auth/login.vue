@@ -56,9 +56,7 @@
 import Form from 'vform'
 
 export default {
-  head () {
-    return { title: this.$t('login') }
-  },
+  middleware: 'guest',
 
   data: () => ({
     form: new Form({
@@ -67,6 +65,10 @@ export default {
     }),
     remember: false
   }),
+
+  head () {
+    return { title: this.$t('login') }
+  },
 
   methods: {
     async login () {

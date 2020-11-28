@@ -1,18 +1,17 @@
 <?php
 
+use App\Http\Controllers\SpaController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| SPA Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register SPA routes for your frontend. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| is assigned the "spa" middleware group.
 |
 */
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
+Route::get('{path}', SpaController::class)->where('path', '(.*)');

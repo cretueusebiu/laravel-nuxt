@@ -39,10 +39,6 @@ import Form from 'vform'
 export default {
   scrollToTop: false,
 
-  head () {
-    return { title: this.$t('settings') }
-  },
-
   data: () => ({
     form: new Form({
       password: '',
@@ -50,11 +46,15 @@ export default {
     })
   }),
 
-  methods: {
-    async update () {
-      await this.form.patch('/settings/password')
+  head () {
+    return { title: this.$t('settings') }
+  },
 
-      this.form.reset()
+  methods: {
+    update () {
+      this.form.patch('/settings/password').then(() => {
+        this.form.reset()
+      })
     }
   }
 }

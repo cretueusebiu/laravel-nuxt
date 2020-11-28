@@ -1,6 +1,6 @@
 # Laravel-Nuxt
 
-<a href="https://travis-ci.org/cretueusebiu/laravel-nuxt"><img src="https://travis-ci.org/cretueusebiu/laravel-nuxt.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/cretueusebiu/laravel-nuxt/actions"><img src="https://github.com/cretueusebiu/laravel-nuxt/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/cretueusebiu/laravel-nuxt"><img src="https://poser.pugx.org/cretueusebiu/laravel-nuxt/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/cretueusebiu/laravel-nuxt"><img src="https://poser.pugx.org/cretueusebiu/laravel-nuxt/v/stable.svg" alt="Latest Stable Version"></a>
 
@@ -12,8 +12,8 @@
 
 ## Features
 
-- Nuxt 2.11
-- Laravel 6
+- Nuxt 2
+- Laravel 8
 - SPA or SSR
 - Socialite integration
 - VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
@@ -22,7 +22,7 @@
 ## Installation
 
 - `composer create-project --prefer-dist cretueusebiu/laravel-nuxt`
-- Edit `.env` to set your database connection details and `APP_URL` (the url to your Laravel application)
+- Edit `.env` and set your database connection details 
 - (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
 - `php artisan migrate`
 - `npm install`
@@ -32,10 +32,14 @@
 ### Development
 
 ```bash
+# start Laravel
+php artisan serve
+
+# start Nuxt
 npm run dev
 ```
 
-You can access your application at `http://localhost:3000`.
+Access your application at `http://localhost:3000`.
 
 ### Production
 
@@ -43,11 +47,9 @@ You can access your application at `http://localhost:3000`.
 npm run build
 ```
 
-You can access your application the url you set `APP_URL` to.
-
 ### Enable SSR
 
-- Remove `mode: 'spa'` and `'~plugins/nuxt-client-init'` from `client/nuxt.config.js` 
+- Edit `client/nuxt.config.js` and set `ssr: true` 
 - Edit `.env` to set `APP_URL=http://api.example.com` and `CLIENT_URL=http://example.com`
 - Run `npm run build` and `npm run start`
 

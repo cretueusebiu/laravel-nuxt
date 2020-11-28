@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0 - 2020-11-28
+
+- Upgrade to Laravel 8
+- Update dependencies
+- Catch validation errors [#105](https://github.com/cretueusebiu/laravel-nuxt/pull/105)
+
 ## 2.2.0 - 2020-01-12
 
 - Upgrade to Nuxt 2.11
