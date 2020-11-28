@@ -50,6 +50,8 @@
 import Form from 'vform'
 
 export default {
+  middleware: 'guest',
+
   data: () => ({
     status: '',
     form: new Form({
