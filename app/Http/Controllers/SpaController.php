@@ -11,6 +11,10 @@ class SpaController extends Controller
      */
     public function __invoke()
     {
-        return file_get_contents(public_path('_nuxt/index.html'));
+        $path = public_path('_nuxt/index.html');
+
+        abort_unless(file_exists($path), 400, 'Make sure to run npm run build!');
+
+        return file_get_contents($path);
     }
 }
