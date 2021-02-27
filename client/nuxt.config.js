@@ -55,6 +55,12 @@ module.exports = {
     extractCSS: true
   },
 
+  watchers: {
+    webpack: {
+      ignored: /node_modules/
+    }
+  },
+
   hooks: {
     generate: {
       done (generator) {
